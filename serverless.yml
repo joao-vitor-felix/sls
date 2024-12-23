@@ -1,0 +1,30 @@
+# "org" ensures this Service is used with the correct Serverless Framework Access Key.
+org: mathux
+# "app" enables Serverless Framework Dashboard features and sharing them with other Services.
+app: teste
+# "service" is the name of this project. This will also be added to your AWS resource names.
+service: sss
+
+plugins:
+  - serverless-offline
+
+package:
+  individually: true
+
+provider:
+  name: aws
+  runtime: nodejs20.x
+
+functions:
+  hello:
+    handler: src/functions/hello.handler
+    events:
+      - httpApi:
+          path: /
+          method: get
+  getUserById:
+    handler: src/functions/getUserById.handler
+    events:
+      - httpApi:
+          path: /users/{userId}
+          method: get
