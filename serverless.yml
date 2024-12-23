@@ -11,6 +11,14 @@ plugins:
 package:
   individually: true
 
+build:
+  esbuild:
+    bundle: true
+    minify: true
+    sourcemap: false
+    exclude:
+      - '@aws-sdk/*'
+
 provider:
   name: aws
   runtime: nodejs20.x
